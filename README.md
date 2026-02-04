@@ -4,21 +4,21 @@ Gnexus是一套面向智能药物研发的 多智能体技能（Skills）体系�
 
 ## 安装
 
-### 1. Clone the project
+#### 1. Clone the project
 
 ```bash
 git clone https://github.com/Gewu-Intelligence/Gnexus
-cd Gnexus/
+cd xxxx
 ```
 
-### 2. 设置conda环境
+#### 2. 设置conda环境
 
 ```bash
 conda env create -f environment.yml
 conda activate gnexus
 ```
 
-### 3. OpenCode安装
+#### 3. OpenCode安装
 
 ```bash
 npm install -g opencode-ai
@@ -37,11 +37,13 @@ opencode
 
 OPENCODE_SERVER_USERNAME=who OPENCODE_SERVER_PASSWORD=secret opencode web --hostname 127.0.0.1 --port 4059
 ```
-使用浏览器访问https://localhost:4059，并使用相应的用户名和密码在浏览器中登录，即可访问opencode的网页服务
+使用浏览器访问[https://localhost:4059]，并使用相应的用户名和密码在浏览器中登录，即可访问opencode的网页服务。
+
+LLM模型建议使用智谱AI GLM-4.7
 
 > 如需局域网访问，请将127.0.0.1替换成0.0.0.0
 
-### 4. 其他软件（可选）
+#### 4. 其他软件（可选）
 
 1. Gromacs
     
@@ -65,7 +67,13 @@ pip install admet-ai
 3. Retrosynthesis
 逆合成分析使用团队开发的[RXNGraphormer](https://github.com/licheng-xu-echo/RXNGraphormer)工具
 ```bash
-conda create -n rxngraphormer python=3.8
+conda create -n rxngraphormer python=3.10
 conda activate rxngraphormer
-pip install rxngraphormer -i https://pypi.org/simple -f https://data.pyg.org/whl/torch-1.12.0+cu113.html --extra-index-url https://download.pytorch.org/whl/cu113
+git clone -b pytorch2 https://github.com/licheng-xu-echo/RXNGraphormer.git
+cd RXNGraphormer/
+
+pip install torch==2.2.1 --index-url https://download.pytorch.org/whl/cu121
+pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.2.0+cu121.html
+pip install rdkit==2024.3.2 ipykernel pandas python-box OpenNMT-py==1.2.0 torchdata==0.7.1 torch_geometric rxnmapper localmapper transformers==4.30.0 numpy==1.26.4 scikit-learn
+pip install .
 ```
