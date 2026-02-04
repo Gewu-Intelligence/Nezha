@@ -1,0 +1,29 @@
+# 邮件配置文件示例
+
+# SMTP 配置 (发送邮件)
+# 端口说明：
+# - 465: 使用 SSL (直接加密连接)
+# - 587: 使用 STARTTLS (先连接后加密)
+smtp:
+  server: smtp.gmail.com
+  port: 587
+
+# IMAP 配置 (接收邮件 - 推荐)
+# IMAP 支持多文件夹、服务器端管理等功能
+imap:
+  server: imap.gmail.com
+  port: 993
+
+# POP3 配置 (接收邮件 - 简单模式)
+# POP3 只能访问收件箱，适合简单场景
+# 端口说明：
+# - 995: SSL 加密
+# - 110: 普通连接
+pop3:
+  server: pop.gmail.com
+  port: 995
+
+# 账户信息
+account:
+  username: your_email@gmail.com
+  password: your_password_or_app_password

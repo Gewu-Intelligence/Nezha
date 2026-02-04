@@ -1,0 +1,16 @@
+name: gnexus
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - vina
+  - openbabel
+  - pip
+  - pip:
+    - admet-ai
+    - meeko
+    - pyKVFinder
+    - gemmi
+    - dimorphite_dl
+    - biobb-pdbtools
