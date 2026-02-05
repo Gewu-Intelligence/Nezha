@@ -13,4 +13,4 @@ dependencies:
     - pyKVFinder
     - gemmi
     - dimorphite_dl
-    - biobb-pdbtools
+    - biobb_pdb_tools

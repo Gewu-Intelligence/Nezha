@@ -1,53 +1,61 @@
 # Gnexus
 
-Gnexus是一套面向智能药物研发的 多智能体技能（Skills）体系，覆盖从靶点调研与结构分析、分子生成与设计、对接与打分筛选、分子动力学模拟，到高精度 FEP 自由能计算的完整计算研发流程。各类 Agent 不再是孤立工具，而是具备明确分工、可相互协作的“专业智能角色”，能够在统一框架下自动衔接任务、共享中间结果，并与团队成员进行自然语言与结构化信息交互，实现科研流程的模块化、自动化与协同化，推动药物发现从“人工驱动”向“智能体协作驱动”演进。
+[English](README.md) | [简体中文](README-zh.md) 
 
-## 安装
+Gnexus is an integrated multi-agent skills system designed for AI-driven drug discovery (AIDD), covering the full computational discovery workflow from target protein investigation, structural analysis, pocket-based molecular generation, docking, molecular dynamics (MD) simulations, to high-accuracy FEP free-energy calculations. Rather than functioning as isolated tools, the Agents act as clearly specialized “professional AI roles” that can collaborate with one another: they automatically hand off tasks within a unified framework, share intermediate results, and interact with team members through natural language and structured information. This enables a modularized, automated, and collaborative research workflow, advancing drug discovery from “human-driven” to “agent-collaboration-driven.”
+
+<div align="center">
+<img src="./docs/main_flowchart_en.png" alt="main_flowchart" width="80%" />
+</div>
+
+## Installation
 
 #### 1. Clone the project
 
 ```bash
 git clone https://github.com/Gewu-Intelligence/Gnexus
-cd xxxx
+cd Gnexus
 ```
 
-#### 2. 设置conda环境
+#### 2. Create a conda environment
 
 ```bash
 conda env create -f environment.yml
 conda activate gnexus
 ```
 
-#### 3. OpenCode安装
+#### 3. Install OpenCode
 
 ```bash
 npm install -g opencode-ai
 ## or
 curl -fsSL https://opencode.ai/install | bash
 ```
-或可通过其他[OpenCode docs](https://opencode.ai/docs)中的其他方式安装。
+You can also install it using other methods described in the [OpenCode docs](https://opencode.ai/docs).
 
-随后应可在shell中启动Opencode TUI(terminal user interface)
+After that, you should be able to launch the OpenCode TUI (terminal user interface) from your shell:
 
 ```bash
 opencode
 ``` 
-或启动一个本地web服务 
+or start a local web server:
+ 
 ```bash
 
 OPENCODE_SERVER_USERNAME=who OPENCODE_SERVER_PASSWORD=secret opencode web --hostname 127.0.0.1 --port 4059
 ```
-使用浏览器访问[https://localhost:4059]，并使用相应的用户名和密码在浏览器中登录，即可访问opencode的网页服务。
 
-LLM模型建议使用智谱AI GLM-4.7
+Open a browser and go to [https://localhost:4059]. Log in with the corresponding username and password to access OpenCode’s web service.
 
-> 如需局域网访问，请将127.0.0.1替换成0.0.0.0
+For the LLM model, Zhipu AI GLM-4.7 is recommended.
 
-#### 4. 其他软件（可选）
+> For LAN access, replace 127.0.0.1 with 0.0.0.0.
+
+#### 4. Other software (optional)
 
 1. Gromacs
     
-如需使用gromacs进行分子动力学模拟，请确保gmx或gmx_mpi已正确设置在环境变量中，请参见[GROMACS Installation guide](https://manual.gromacs.org/documentation/current/install-guide/index.html)
+If you plan to use GROMACS for MD simulations, make sure gmx or gmx_mpi is correctly set in your environment variables (PATH). Please refer to the[GROMACS Installation guide](https://manual.gromacs.org/documentation/current/install-guide/index.html)
 ```bash
 # vi ~/.bashrc
 # settings of MPI environmnet
@@ -57,7 +65,7 @@ gmx_mpi --version
 ```
 
 2. ADMET
-如需使用admet预测，需安装[admet-ai](https://github.com/swansonk14/admet_a)
+To use ADMET prediction, please install [admet-ai](https://github.com/swansonk14/admet_a)
 ```bash
 conda create -y -n admet_ai python=3.12
 conda activate admet_ai
@@ -65,7 +73,7 @@ pip install admet-ai
 ```
 
 3. Retrosynthesis
-逆合成分析使用团队开发的[RXNGraphormer](https://github.com/licheng-xu-echo/RXNGraphormer)工具
+For retrosynthesis analysis, use the team-developed [RXNGraphormer](https://github.com/licheng-xu-echo/RXNGraphormer)工具
 ```bash
 conda create -n rxngraphormer python=3.10
 conda activate rxngraphormer
