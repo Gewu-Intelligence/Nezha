@@ -12,7 +12,7 @@ To perform molecular docking, the user should provide the protein structure (.pd
 | :--- | :--- | :--- | :--- |
 | `protein_file` | string | 是 | 蛋白文件，通常是pdb文件 ｜
 | `ligand_file` | string | 是 | 化合物的文件，通常是sdf文件 |
-| `configure_file` | string | 是 | 配置文件，通常是txt文件 |
+| `configure_file` | string | 是 | 蛋白口袋文件，通常是csv文件 |
 | `output_dir` | string | 否 | 输出文件的目录 |
 
 ## Quick Start

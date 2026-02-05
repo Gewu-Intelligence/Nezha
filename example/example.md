@@ -1,4 +1,4 @@
-# EXAMPLE: TYK2 端到端计算药物设计 Pipeline
+# EXAMPLE: TYK2 药物设计工作流
 
 > 这是一个 **示例**，展示一些提示词如何把一个从靶点调研 → 结构准备 → MD → 口袋预测 → 分子生成 → 配体准备 → 对接 → FEP → 合成路线 → 邮件沟通 → 入库 的流程组织成可复现的项目结构与任务清单。  
 
@@ -22,32 +22,32 @@
 ```
 ## MD
 ```
-运行MD模拟（10000 步；输入 ./pdb/_A_apo.pdb.pdb；输出到 ./md）
+运行MD模拟（10000 步；输入 ./pdb/protein_A_apo.pdb.pdb；输出到 ./md）
 ```
 
 ## 预测结合口袋
 ```
-预测结合口袋（输入 ./pdb/_A_apo.pdb.pdb；输出到 ./pocket）
+预测结合口袋（输入 ./pdb/protein_A_apo.pdb.pdb；输出到 ./pocket/）
 ```
 
 ## 分子生成
 ```
 分子生成（蛋白 + 口袋；输出到 ./generation）
 输入：
-./pdb/_A_apo.pdb.pdb
+./pdb/protein_A_apo.pdb.pdb
 ./pocket/pockets_summary.csv
 ```
 ## 配体准备
 ```
-小分子准备（输入 ./generation/SMILES.csv；输出到 ./lig_prep）
+小分子准备（输入 ./example/generation/SMILES.csv；输出到 ./lig_prep）
 ```
 ## 分子对接
 ```
 分子对接（蛋白 + 口袋 + 小分子；“生成个新分子”；输出到 ./docking）
 输入：
-./pdb/_A_apo.pdb.pdb
+./pdb/protein_A_apo.pdb.pdb
 ./pocket/pockets_summary.csv
-./generation/SMILES.csv
+./lig_prep/lig_prepped.sdf
 ```
 
 ## FEP
@@ -57,9 +57,15 @@
 ./pdb/_A_apo.pdb.pdb
 ./docking/output/ligands_docking.sdf
 ```
+
+## ADMET
+```
+预测example/generation/SMILES.csv的admet
+```
+
 ## 预测合成路线
 ```
-预测合成路线（输入 ./generation/SMILES.csv；输出到 ./synthesis）
+预测合成路线（输入 ./example/generation/SMILES.csv；输出到 ./synthesis）
 ```
 
 ## 邮件与入库

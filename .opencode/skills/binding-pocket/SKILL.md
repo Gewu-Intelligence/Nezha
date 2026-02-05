@@ -19,6 +19,6 @@ Given a protein structure file (.pdb), identify potential binding pockets and re
 ### 有输出文件夹
 
 ```bash
-python pocket_analyzer {{protein_file}}  -o {{output_dir}}
+python pocket_analyzer {{protein_file}}  -o {{output_dir}}/pockets_summary.csv
 
 ```

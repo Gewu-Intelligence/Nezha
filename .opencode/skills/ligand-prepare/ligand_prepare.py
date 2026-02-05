@@ -1,5 +1,6 @@
 import sys,os
 from rdkit import Chem
+import pandas as pd
 
 from rdkit.Chem import AllChem
 from dimorphite_dl import protonate_smiles
@@ -69,6 +70,11 @@ def run(fs,output_dir):
         for ss in lines:
             m = Chem.MolFromSmiles(ss.strip())
             scripts.append(ligand_prepare(m))
+    elif fs[-4:] == ".csv":
+        df = pd.read_csv(fs)
+        for index, row in df.iterrows():
+            m = Chem.MolFromSmiles(row["SMILES"])
+            scripts.append(ligand_prepare(m,m_name=None))
     else:
         m = Chem.MolFromSmiles(fs)
         scripts.append(ligand_prepare(m))
