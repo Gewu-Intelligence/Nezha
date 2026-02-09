@@ -1,6 +1,6 @@
 # Gnexus
 
-[English](README.md) | [简体中文](README.zh.md) 
+[English](README.md) | [简体中文](README.zh.md) | [视频](https://www.bilibili.com/video/BV19CcTzFEH4)
 
 Gnexus is an integrated multi-agent skills system designed for AI-driven drug discovery (AIDD), covering the full computational discovery workflow from target protein investigation, structural analysis, pocket-based molecular generation, docking, molecular dynamics (MD) simulations, to high-accuracy FEP free-energy calculations. Rather than functioning as isolated tools, the Agents act as clearly specialized “professional AI roles” that can collaborate with one another: they automatically hand off tasks within a unified framework, share intermediate results, and interact with team members through natural language and structured information. This enables a modularized, automated, and collaborative research workflow, advancing drug discovery from “human-driven” to “agent-collaboration-driven.”
 
