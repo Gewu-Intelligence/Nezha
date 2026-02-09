@@ -51,7 +51,7 @@
 
 ### FEP
 ```
- 做 FEP（输入蛋白 + ligands_docking.sdf；输出到 ./fep）
+做 FEP（输入蛋白 + ligands_docking.sdf；输出到 ./fep）
 输入：
 ./pdb/_A_apo.pdb.pdb
 ./docking/output/ligands_docking.sdf

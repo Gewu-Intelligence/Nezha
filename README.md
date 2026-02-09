@@ -89,17 +89,7 @@ For the LLM model, Zhipu AI GLM-4.7 is recommended.
     source $GMX_PATH/install/bin/GMXRC
     gmx_mpi --version
     ```
-
-2. ADMET
-    
-    To use ADMET prediction, please install [admet-ai](https://github.com/swansonk14/admet_a)
-    ```bash
-    conda create -y -n admet_ai python=3.12
-    conda activate admet_ai
-    pip install admet-ai
-    ```
-
-3. Retrosynthesis
+2. Retrosynthesis
 
     For retrosynthesis analysis, use the team-developed [RXNGraphormer](https://github.com/licheng-xu-echo/RXNGraphormer)
     ```bash
@@ -140,9 +130,4 @@ Run MD simulation (10000 steps, input ./pdb/protein_A_apo.pdb.pdb；output to ./
 * Pocket prediction
 ```
 Predict the pocket of 8S99, (input ./pdb/protein_A_apo.pdb.pdb, output to ./pocket/)
-```
-
-* ADMET
-```
-Predict the admet of example/generation/SMILES.csv
 ```

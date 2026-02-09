@@ -1,6 +1,5 @@
 # Gnexus
 
-<img src="./docs/logo.svg" alt="logo" style="display:inline; vertical-align:middle, horizental-align:right; height:3em;" />
 [English](README.md) | [简体中文](README.zh.md)  
 
 
@@ -78,14 +77,6 @@ source $GMX_PATH/install/bin/GMXRC
 gmx_mpi --version
 ```
 
-#### ADMET
-
-如需使用admet预测，需安装[admet-ai](https://github.com/swansonk14/admet_a)
-```bash
-conda create -y -n admet_ai python=3.12
-conda activate admet_ai
-pip install admet-ai
-```
 
 #### Retrosynthesis
 
@@ -129,9 +120,4 @@ pip install .
 * 预测结合口袋
 ```
 预测结合口袋（输入 ./pdb/protein_A_apo.pdb.pdb；输出到 ./pocket/）
-```
-
-* ADMET
-```
-预测example/generation/SMILES.csv的admet
 ```
