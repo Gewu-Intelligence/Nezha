@@ -6,7 +6,7 @@
 Gnexus是一套面向智能药物研发的 多智能体技能（Skills）体系，覆盖从靶点调研与结构分析、分子生成与设计、对接与打分筛选、分子动力学模拟，到高精度 FEP 自由能计算的完整计算研发流程。各类 Agent 不再是孤立工具，而是具备明确分工、可相互协作的“专业智能角色”，能够在统一框架下自动衔接任务、共享中间结果，并与团队成员进行自然语言与结构化信息交互，实现科研流程的模块化、自动化与协同化，推动药物发现从“人工驱动”向“智能体协作驱动”演进。
 
 <div align="center">
-<img src="./docs/flowchart_zh.jpg" alt="main_flowchart" width="80%" />
+<img src="./images/flowchart_zh.jpg" alt="main_flowchart" width="80%" />
 </div>
 
 ## 能力
@@ -98,7 +98,7 @@ pip install .
 ## 示例
 
 <div align="center">
-<img src="./docs/wciki-bm6ev.gif" alt="main_flowchart" width="80%" />
+<img src="./images/wciki-bm6ev.gif" alt="main_flowchart" width="80%" />
 </div>
 
 更多示例请参考[示例文档](example/example.md)
