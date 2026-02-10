@@ -1,9 +1,9 @@
-# Gnexus
+# 浑天绫(Huntianling)
 
 [English](README.md) | [简体中文](README.zh.md) | [视频](https://www.bilibili.com/video/BV19CcTzFEH4)
 
 
-Gnexus是一套面向智能药物研发的 多智能体技能（Skills）体系，覆盖从靶点调研与结构分析、分子生成与设计、对接与打分筛选、分子动力学模拟，到高精度 FEP 自由能计算的完整计算研发流程。各类 Agent 不再是孤立工具，而是具备明确分工、可相互协作的“专业智能角色”，能够在统一框架下自动衔接任务、共享中间结果，并与团队成员进行自然语言与结构化信息交互，实现科研流程的模块化、自动化与协同化，推动药物发现从“人工驱动”向“智能体协作驱动”演进。
+浑天绫(Huntianling)是一套面向智能药物研发的 多智能体技能（Skills）体系，覆盖从靶点调研与结构分析、分子生成与设计、对接与打分筛选、分子动力学模拟，到高精度 FEP 自由能计算的完整计算研发流程。各类 Agent 不再是孤立工具，而是具备明确分工、可相互协作的“专业智能角色”，能够在统一框架下自动衔接任务、共享中间结果，并与团队成员进行自然语言与结构化信息交互，实现科研流程的模块化、自动化与协同化，推动药物发现从“人工驱动”向“智能体协作驱动”演进。
 
 <div align="center">
 <img src="./images/flowchart_zh.jpg" alt="main_flowchart" width="80%" />
@@ -30,15 +30,15 @@ Gnexus是一套面向智能药物研发的 多智能体技能（Skills）体系�
 ### 下载
 
 ```bash
-git clone https://github.com/Gewu-Intelligence/Gnexus
-cd Gnexus
+git clone https://github.com/Gewu-Intelligence/Huntianling
+cd Huntianling
 ```
 
 ### 设置conda环境
 
 ```bash
 conda env create -f environment.yml
-conda activate gnexus
+conda activate huntianling
 ```
 
 ### OpenCode安装
