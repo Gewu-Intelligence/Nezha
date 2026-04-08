@@ -16,7 +16,7 @@ The workflow involves:
 The clickable link must be in the formula like:
 
 ```html
-<a href="{{RESULT_URL}}">Download Link: {{FILE_NAME}}</a>
+<a href="{{RESULT_URL}}" target="_blank">Download Link: {{FILE_NAME}}</a>
 ```
 where RESULT_URL is the url link generated after file-uploading，FILE_NAME is the filename
 
