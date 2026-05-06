@@ -1,0 +1,338 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+        "novelty_search": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/bec69d/novelty-search-mcp"
+            ],
+            "enabled": true
+        },
+        "pharma_intelligence": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/096456/logic-mcp"
+            ],
+            "enabled": true
+        },
+        "chemical_molecular": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/713886/logic-mcp"
+            ],
+            "enabled": true
+        },
+        "biology_modality": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/06e741/logic-mcp"
+            ],
+            "enabled": true
+        },
+        "patent_literature_search": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/f8fb98/mcp"
+            ],
+            "enabled": true
+        },
+        "corporate_intangible_assets": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/9fc1e7/mcp"
+            ],
+            "enabled": true
+        },
+        "technical_r_d_q_a": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/1cf8c6/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_translation": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/44a521/mcp"
+            ],
+            "enabled": true
+        },
+        "design_patent_infringement_search_mcp": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/937ec6/mcp"
+            ],
+            "enabled": true
+        },
+        "technical_solution_explorer": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/47989f/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_disputes_sep": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/4f9217/mcp"
+            ],
+            "enabled": true
+        },
+        "innovation_report_generator": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/1fadfc/mcp"
+            ],
+            "enabled": true
+        },
+        "open_innovation_collaboration_analytics": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/81cc1c/mcp"
+            ],
+            "enabled": true
+        },
+        "scientific_literature_journals": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/eba075/mcp"
+            ],
+            "enabled": true
+        },
+        "small_molecule_fto_search": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/3092e7/mcp"
+            ],
+            "enabled": true
+        },
+        "biologics_sequence_fto_search": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/e300b3/mcp"
+            ],
+            "enabled": true
+        },
+        "drug_milestone_tracker": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/c88c8c/mcp"
+            ],
+            "enabled": true
+        },
+        "pharma_organization_pipeline": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/ef5102/mcp"
+            ],
+            "enabled": true
+        },
+        "translational_medicine_intelligence": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/3b1050/mcp"
+            ],
+            "enabled": true
+        },
+        "clinical_trial_database": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/e910fe/mcp"
+            ],
+            "enabled": true
+        },
+        "drug_target_profiles": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/b6f924/mcp"
+            ],
+            "enabled": true
+        },
+        "molecule_sequence_search": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/d1e3e0/mcp"
+            ],
+            "enabled": true
+        },
+        "advanced_patent_search": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/33072f/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_monetization_valuation": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/11227f/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_legal_status_annuity": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/30096b/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_briefing": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/958a46/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_landscape_analytics": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/59100a/mcp"
+            ],
+            "enabled": true
+        },
+        "deep_patent_mining": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/7cc6ae/mcp"
+            ],
+            "enabled": true
+        },
+        "global_patent_fto_search": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/e5851d/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_valuation_scorecard": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/67d1b4/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_visual_analytics": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/3fd502/mcp"
+            ],
+            "enabled": true
+        },
+        "patent_landscape_projects": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/4eaa49/mcp"
+            ],
+            "enabled": true
+        },
+        "global_trademark_search_clearance": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/b0bdca/mcp"
+            ],
+            "enabled": true
+        },
+        "ip_innovation_courses": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/588922/mcp"
+            ],
+            "enabled": true
+        },
+        "biomedical_terminology_dictionary": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/27138a/mcp"
+            ],
+            "enabled": true
+        },
+        "pharma_intelligence_hub": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/172627/mcp"
+            ],
+            "enabled": true
+        },
+        "global_core_patent_database": {
+            "type": "local",
+            "command": [
+                "node",
+                "./zhihuiya-mcp-bridge.mjs",
+                "https://connect.zhihuiya.com/1458a4/mcp"
+            ],
+            "enabled": true
+        }
+    }
+}
