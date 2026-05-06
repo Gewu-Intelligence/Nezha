@@ -87,7 +87,7 @@ RUN apt-get install -y wget gpg-agent
 RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
     | gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
 RUN echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
-RUN apt-get update &&  apt install -y intel-oneapi-mkl intel-oneapi-mpi
+RUN apt-get update &&  apt install -y intel-oneapi-base-toolkit # intel-oneapi-mkl intel-oneapi-mpi
 
 # 从 builder 复制已编译的 GROMACS / LAMMPS
 COPY --from=gromacs-builder /opt/gromacs /opt/gromacs
@@ -181,8 +181,8 @@ RUN rm -rf /var/lib/apt/lists/*
 
 ### lampmps envi
 # 配置环境：GROMACS 与 Intel OneAPI 从 builder 复制，路径已变更
-RUN echo "source  /opt/lammps/etc/profile.d/lammps.sh" >> /root/.bashrc && \
-    echo "export PATH=\"/opt/lammps/bin:$PATH\"" >> /root/.bashrc
+RUN echo 'source  /opt/lammps/etc/profile.d/lammps.sh' >> /root/.bashrc && \
+    echo 'export PATH=/opt/lammps/bin:$PATH' >> /root/.bashrc
 
 
 RUN chmod +x /app/huntianling/start_all.sh
