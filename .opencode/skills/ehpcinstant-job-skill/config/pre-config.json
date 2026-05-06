@@ -1,0 +1,25 @@
+{
+  "Region": "cn-shanghai",
+  "Image":"crpi-lk3um3q91l9bb8oe.cn-shanghai.personal.cr.aliyuncs.com/drug-design/drug-design-celery:v0.0.1",
+  "Vswitch":"vsw-uf62h7qwmv8kiw2irmkvz",
+  "VolumeMount": [
+    {
+      "MountPath": "/mnt",
+      "VolumeDriver": "alicloud/nas",
+      "MountOptions": "{\"server\":\"xxx.cn-shanghai.nas.aliyuncs.com\",\"vers\":\"3\",\"path\":\"/\",\"options\":\"nolock,tcp,noresvport\"}"
+    }
+  ],
+  "Resource": {
+    "Cores": 4,
+    "Memory": 8,
+    "InstanceTypes":[
+      ""
+    ],
+    "Disks": [
+      {
+        "Type": "System",
+        "Size": 40
+      }
+    ]
+  }
+}
