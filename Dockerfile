@@ -25,23 +25,54 @@ RUN apt-get update && apt-get install -y intel-oneapi-base-toolkit && rm -rf /va
 # RUN wget https://ftp.gromacs.org/gromacs/gromacs-2023.tar.gz
 RUN mkdir -p -m 0700 ~/.ssh && \
     ssh-keyscan github.com >> ~/.ssh/known_hosts
-RUN --mount=type=ssh git clone git@github.com:golab-ai/gromacs-fep.git
+RUN git config --global http.proxy $HTTP_PROXY && \
+    git config --global https.proxy $HTTPS_PROXY && \
+    git clone https://github.com/golab-ai/gromacs-fep.git
+# RUN --mount=type=ssh git clone git@github.com:golab-ai/gromacs-fep.git
 
+RUN echo hello
 RUN source /opt/intel/oneapi/setvars.sh --force && \
     cd gromacs-fep && \
     mkdir build && cd build && \
     cmake .. \
         -DGMX_BUILD_OWN_FFTW=ON \
-        -DREGRESSIONTEST_DOWNLOAD=ON \
+        -DREGRESSIONTEST_DOWNLOAD=OFF \
         -DCMAKE_INSTALL_PREFIX=/opt/gromacs \
         -DGMX_MPI=ON \
-        -DCMAKE_C_COMPILER=/opt/intel/oneapi/mpi/2021.17/bin/mpigcc \
-        -DCMAKE_CXX_COMPILER=/opt/intel/oneapi/mpi/2021.17/bin/mpigxx \
+        -DCMAKE_C_COMPILER=/opt/intel/oneapi/mpi/2021.17/bin/mpicc \
+        -DCMAKE_CXX_COMPILER=/opt/intel/oneapi/mpi/2021.17/bin/mpicxx \
         -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda \
-        -DGMX_GPU=CUDA \
-    && make -j$(nproc) && make install
+        -DGMX_GPU=CUDA && \
+    make -j 8 && make install
 
-
+############### INSTALL LAMMPS ###############
+RUN wget https://github.com/lammps/lammps/archive/refs/tags/stable_22Jul2025_update4.tar.gz
+RUN apt-get update &&  apt-get install -y cmake  python3
+RUN tar -xvf stable_22Jul2025_update4.tar.gz && \
+    cd lammps-stable_22Jul2025_update4/  && \
+    mkdir build-gpu  && \
+    cd build-gpu   && \
+    source /opt/intel/oneapi/setvars.sh  && \
+    cmake -C ../cmake/presets/basic.cmake \
+          -C ../cmake/presets/kokkos-cuda.cmake \
+          -D CMAKE_INSTALL_PREFIX=/opt/lammps \
+          -D PKG_KOKKOS=on \
+          -D PKG_GPU=on \
+          -D GPU_API=cuda \
+          -D GPU_ARCH=sm_89 \
+          -D Kokkos_ARCH_ADA89=ON \
+          -D CMAKE_C_COMPILER=/opt/intel/oneapi/mpi/2021.17/bin/mpicc \
+          -D CMAKE_CXX_COMPILER=/opt/intel/oneapi/mpi/2021.17/bin/mpicxx \
+          -D PKG_KSPACE=on \
+          -D PKG_MOLECULE=on \
+          -D PKG_RIGID=on \
+          -D PKG_CLASS2=on \
+          -D PKG_EXTRA_PAIR=on \
+          -D PKG_MC=on \
+          ../cmake
+RUN cd lammps-stable_22Jul2025_update4/build-gpu && source /opt/intel/oneapi/setvars.sh && make -j 8 && make install
+ 
+ 
 ############ STAGE 2: 基于 runtime 镜像打包其他功能 ###############
 FROM nvidia/cuda:12.8.0-runtime-ubuntu22.04
 
@@ -49,16 +80,18 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV PATH="/root/miniconda3/bin:${PATH}"
 SHELL ["/bin/bash", "-c"]
 
-# 从 builder 复制已编译的 GROMACS 和 Intel OneAPI 运行时
-COPY --from=gromacs-builder /opt/gromacs /opt/gromacs
 
+RUN echo hello
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends wget gpg-agent
+RUN apt-get install -y wget gpg-agent
 RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB \
     | gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null
 RUN echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list
-RUN apt update
-RUN apt install -y intel-oneapi-mkl intel-oneapi-mpi
+RUN apt-get update &&  apt install -y intel-oneapi-base-toolkit # intel-oneapi-mkl intel-oneapi-mpi
+
+# 从 builder 复制已编译的 GROMACS / LAMMPS
+COPY --from=gromacs-builder /opt/gromacs /opt/gromacs
+COPY --from=gromacs-builder /opt/lammps /opt/lammps
 
 ############ INSTALL BASE TOOLS ###############
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -109,8 +142,9 @@ RUN mkdir -p -m 0700 ~/.ssh && \
 # ARG CRATON_COMMIT
 # RUN echo "Craton commit: ${CRATON_COMMIT}"
 # RUN --mount=type=ssh cd /opt && git clone git@github.com:golab-ai/craton.git
-COPY ./craton /opt/craton
-RUN cd /opt/craton && conda run -n huntianling pip install -e .
+# COPY ./craton /opt/craton
+RUN git clone https://github.com/golab-ai/craton.git 
+RUN mv craton /opt/ && cd /opt/craton && conda run -n huntianling pip install -e .
 
 ############ Huntianling Skills ############
 RUN apt install -y zip libxrender1 libxext6
@@ -140,11 +174,18 @@ RUN chown -R www-data:www-data /app/huntianling/opencode_canvas/dist && \
 # If you want the original version of opencode code, use the following command. 
 # RUN curl -fsSL https://opencode.ai/install | bash
 
-# RUN rm -rf /var/lib/apt/lists/*
+RUN rm -rf /var/lib/apt/lists/*
 
 ##### Addition ##### (should add to environment.yaml later)
 # RUN conda run -n huntianling pip install modelscope 
 
+### lampmps envi
+# 配置环境：GROMACS 与 Intel OneAPI 从 builder 复制，路径已变更
+RUN echo 'source  /opt/lammps/etc/profile.d/lammps.sh' >> /root/.bashrc && \
+    echo 'export PATH=/opt/lammps/bin:$PATH' >> /root/.bashrc
+
+
 RUN chmod +x /app/huntianling/start_all.sh
 CMD ["/bin/bash", "/app/huntianling/start_all.sh"]
 
+# 
